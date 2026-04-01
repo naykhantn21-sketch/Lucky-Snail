@@ -1,0 +1,167 @@
+
+```html
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky snail - 2D/3D Live</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pyidaungsu:wght@400;700&display=swap');
+        body { font-family: 'Pyidaungsu', sans-serif; user-select: none; }
+        .glass-effect { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-6 sticky top-0 z-50 shadow-lg rounded-b-[30px]">
+        <div class="max-w-md mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-black italic tracking-tighter uppercase">Lucky snail</h1>
+                <p id="liveDate" class="text-xs opacity-80 font-medium mt-1"></p>
+            </div>
+            <div class="bg-white/20 p-3 rounded-2xl">
+                <i class="fas fa-snail text-2xl text-yellow-300"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto p-5 pb-24">
+
+        <!-- Tab: Home (Live View) -->
+        <div id="home" class="tab-content active animate-in fade-in duration-500">
+            
+            <!-- Live Result Card -->
+            <div class="bg-white rounded-[35px] p-8 shadow-xl border border-white text-center mb-6 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 to-emerald-500"></div>
+                
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-red-100 text-red-600 text-[10px] font-black px-3 py-1 rounded-full animate-pulse uppercase tracking-widest">Live Now</span>
+                    <span id="liveClock" class="text-slate-400 font-bold text-sm">00:00:00 PM</span>
+                </div>
+
+                <p class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-2">Thai 2D Result</p>
+                <div class="text-8xl font-black text-slate-800 tracking-tighter drop-shadow-sm" id="liveNum">--</div>
+                
+                <div class="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-slate-50">
+                    <div class="bg-slate-50 p-4 rounded-[20px]">
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">SET Index</p>
+                        <p class="font-black text-lg text-emerald-600" id="setIndex">1,432.21</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-[20px]">
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">Value</p>
+                        <p class="font-black text-lg text-emerald-600" id="setValue">42,501.10</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Session Card -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-white p-5 rounded-[25px] shadow-sm border border-slate-100">
+                    <p class="text-xs font-bold text-slate-400 mb-2 uppercase">Morning (12:01)</p>
+                    <p class="text-3xl font-black text-slate-700">45</p>
+                </div>
+                <div class="bg-white p-5 rounded-[25px] shadow-sm border border-slate-100">
+                    <p class="text-xs font-bold text-slate-400 mb-2 uppercase">Evening (04:30)</p>
+                    <p class="text-3xl font-black text-slate-700">--</p>
+                </div>
+            </div>
+
+            <!-- 3D Result Section -->
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-[30px] p-6 shadow-lg text-white mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-sm tracking-widest uppercase text-yellow-400">3D Result</h3>
+                    <span class="text-[10px] opacity-50">16-Oct-2023</span>
+                </div>
+                <div class="flex justify-center gap-4">
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl font-black">7</div>
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl font-black">2</div>
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl font-black">9</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: History (ဒေတာဟောင်းများ) -->
+        <div id="history" class="tab-content animate-in fade-in duration-500">
+            <h3 class="font-black text-2xl mb-6 px-2 text-slate-800">History Records</h3>
+            <div class="space-y-4">
+                <!-- Sample History Items -->
+                <div class="bg-white p-5 rounded-[25px] shadow-sm border border-slate-100 flex justify-between items-center">
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">13 Oct 2023</p>
+                        <p class="font-black text-lg">Morning Result</p>
+                    </div>
+                    <div class="text-3xl font-black text-emerald-600 tracking-tighter">84</div>
+                </div>
+                <div class="bg-white p-5 rounded-[25px] shadow-sm border border-slate-100 flex justify-between items-center">
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">12 Oct 2023</p>
+                        <p class="font-black text-lg">Evening Result</p>
+                    </div>
+                    <div class="text-3xl font-black text-emerald-600 tracking-tighter">12</div>
+                </div>
+                <div class="bg-white p-5 rounded-[25px] shadow-sm border border-slate-100 flex justify-between items-center opacity-60">
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">11 Oct 2023</p>
+                        <p class="font-black text-lg">Morning Result</p>
+                    </div>
+                    <div class="text-3xl font-black text-slate-400 tracking-tighter">56</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 glass-effect border-t border-slate-100 px-10 py-4 z-50 rounded-t-[30px]">
+        <div class="max-w-md mx-auto flex justify-around items-center text-slate-300">
+            <button onclick="showTab('home')" id="homeBtn" class="flex flex-col items-center text-emerald-600 transition-all scale-110">
+                <i class="fas fa-chart-line text-xl"></i>
+                <span class="text-[10px] font-bold mt-1">Live</span>
+            </button>
+            <button onclick="showTab('history')" id="historyBtn" class="flex flex-col items-center transition-all hover:text-emerald-500">
+                <i class="fas fa-history text-xl"></i>
+                <span class="text-[10px] font-bold mt-1">History</span>
+            </button>
+            <button class="flex flex-col items-center transition-all hover:text-emerald-500">
+                <i class="fas fa-info-circle text-xl"></i>
+                <span class="text-[10px] font-bold mt-1">About</span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            
+            // UI Button Active State
+            const isHome = tab === 'home';
+            document.getElementById('homeBtn').className = isHome ? 'flex flex-col items-center text-emerald-600 scale-110' : 'flex flex-col items-center text-slate-300';
+            document.getElementById('historyBtn').className = !isHome ? 'flex flex-col items-center text-emerald-600 scale-110' : 'flex flex-col items-center text-slate-300';
+        }
+
+        // Real-time Update Simulation
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('liveClock').innerText = now.toLocaleTimeString();
+            document.getElementById('liveDate').innerText = now.toDateString().toUpperCase();
+            
+            // Random Number Simulation
+            if (now.getSeconds() % 5 === 0) {
+                const randomVal = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+                document.getElementById('liveNum').innerText = randomVal;
+                document.getElementById('setIndex').innerText = (1400 + Math.random()*50).toLocaleString(undefined, {minimumFractionDigits: 2});
+                document.getElementById('setValue').innerText = (20000 + Math.random()*50000).toLocaleString(undefined, {minimumFractionDigits: 2});
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
+```
+
